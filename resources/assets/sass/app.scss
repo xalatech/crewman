@@ -1,1 +1,30 @@
+// Bulma
+@import "~bulma/bulma.sass";
 
+body,
+html {
+    background-color: #fefefe;
+    margin: 0;
+    padding: 0;
+}
+a {
+    outline: none;
+}
+#app {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+// copied from osmaviation.com
+li, p {
+    font-family: lato,sans-serif;
+    font-weight: 300;
+    color: #1d1d1d;
+    font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: futura-pt,sans-serif;
+    color: #576074;
+    font-weight: 500;
+}

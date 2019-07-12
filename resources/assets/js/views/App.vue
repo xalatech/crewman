@@ -1,29 +1,21 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-      <div class="container">
-        <router-link :to="{name: 'home'}" class="navbar-brand">Crewman</router-link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav mr-auto"></ul>
-          <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-          </ul>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+            Crewman
+            </a>
+            <div class="navbar-item is-hidden-desktop">
+                <p class="control">
+                    <a class="button is-primary" href="#">
+                            <span class="icon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        <span>Date</span>
+                    </a>
+                </p>
+            </div>
         </div>
-      </div>
     </nav>
     <main class="py-4">
       <router-view></router-view>
