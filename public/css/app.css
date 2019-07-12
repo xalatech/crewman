@@ -11725,13 +11725,20 @@ html {
   box-sizing: border-box;
 }
 
-a {
-  outline: none;
+body {
+  margin: 0;
+  padding: 0;
+  background: #fefefe;
+  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#app {
-  margin-top: 40px;
-  margin-bottom: 40px;
+a {
+  outline: none;
 }
 
 li,
@@ -11759,6 +11766,10 @@ a:hover {
 }
 
 .navbar-item img {
-  max-height: 120px;
+  max-height: 100px;
+}
+
+.navbar {
+  padding: 5px;
 }
 
