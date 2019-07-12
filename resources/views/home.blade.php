@@ -14,7 +14,23 @@
 
         <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
     </head>
-
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="images/osm_logo.png" alt="ToDo application" height="100">
+            </a>
+            <div class="navbar-item is-hidden-desktop">
+                <p class="control">
+                    <a class="button is-primary" href="#">
+                            <span class="icon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        <span>Date</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
    <div id='app' class="container">
         <app></app>
     </div>

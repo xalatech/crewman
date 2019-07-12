@@ -15,7 +15,12 @@ class CreateEmploymentsTable extends Migration
     {
         Schema::create('employments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integer('employer_id');
+            $table->integer('employee_osma_id');
+            $table->string('description');
+            $table->date('start_date');
+            $table->date('end_date');
+
         });
     }
 

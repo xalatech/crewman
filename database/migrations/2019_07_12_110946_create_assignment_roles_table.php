@@ -15,6 +15,11 @@ class CreateAssignmentRolesTable extends Migration
     {
         Schema::create('assignment_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('assignment_id');
+            $table->string('description');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('role_type');
             $table->timestamps();
         });
     }

@@ -4,8 +4,9 @@
 body,
 html {
     background-color: #fefefe;
-    margin: 0;
-    padding: 0;
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 a {
     outline: none;
@@ -27,4 +28,12 @@ h1, h2, h3, h4, h5, h6 {
     font-family: futura-pt,sans-serif;
     color: #576074;
     font-weight: 500;
+}
+
+a:focus, a:hover {
+    color: #1468a0;
+}
+
+.navbar-item img {
+    max-height: 120px;
 }

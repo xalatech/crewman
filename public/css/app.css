@@ -11720,8 +11720,9 @@ label.panel-block:hover {
 body,
 html {
   background-color: #fefefe;
-  margin: 0;
-  padding: 0;
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 a {
@@ -11750,5 +11751,14 @@ h6 {
   font-family: futura-pt, sans-serif;
   color: #576074;
   font-weight: 500;
+}
+
+a:focus,
+a:hover {
+  color: #1468a0;
+}
+
+.navbar-item img {
+  max-height: 120px;
 }
 

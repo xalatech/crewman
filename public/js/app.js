@@ -100,25 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1296,42 +1277,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("main", { staticClass: "py-4" }, [_c("router-view")], 1)
-  ])
+  return _c("div", [_c("router-view")], 1)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "navbar" }, [
-      _c("div", { staticClass: "navbar-brand" }, [
-        _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [
-          _vm._v("\n          Crewman\n          ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "navbar-item is-hidden-desktop" }, [
-          _c("p", { staticClass: "control" }, [
-            _c(
-              "a",
-              { staticClass: "button is-primary", attrs: { href: "#" } },
-              [
-                _c("span", { staticClass: "icon" }, [
-                  _c("i", { staticClass: "fa fa-calendar" })
-                ]),
-                _vm._v(" "),
-                _c("span", [_vm._v("Date")])
-              ]
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

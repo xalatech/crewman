@@ -15,6 +15,8 @@ class CreateAssignmentLocationsTable extends Migration
     {
         Schema::create('assignment_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('assignment_id');
+            $table->string('country');
             $table->timestamps();
         });
     }
