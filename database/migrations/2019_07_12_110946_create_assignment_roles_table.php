@@ -20,7 +20,7 @@ class CreateAssignmentRolesTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('role_type');
+            $table->enum('role_type', ['Qualification', 'Position']);
             $table->timestamp('created_at')->nullable();
 
             $table->foreign('assignment_id')->references('id')->on('assignments')->onDelee('cascade');

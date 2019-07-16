@@ -15,13 +15,12 @@ class CreateEmploymentsTable extends Migration
     {
         Schema::create('employments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('employer_id')->unsigned();
-            $table->integer('employee_osma_id')->unsigned();
+            $table->integer('employer_id');
+            $table->integer('employee_osma_id');
             $table->string('title');
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->tinyInteger('current');
             $table->timestamp('created_at')->nullable();
 
             $table->foreign('employer_id')->references('id')->on('employers')->onDelete('cascade');

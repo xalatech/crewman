@@ -15,9 +15,11 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->integer('osma_id');
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->timestamp('created_at')->nullable();
+
+            $table->primary('osma_id');
         });
     }
 
