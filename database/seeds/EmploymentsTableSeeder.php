@@ -16,14 +16,14 @@ class EmploymentsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('App\Models\Employment');
-        $faker->addProvider(new \Brunty\Faker\BuzzwordJobProvider($faker));
+        $faker->addProvider(new \Faker\Provider\en_US\Company($faker));
 
         foreach(range(1, 10) as $index) {
             DB::table('employments')->insert([
                 'employer_id' => $this->getRandomEmployerId(),
                 'employee_osma_id' => $this->getRandomEmployeeId(),
                 'title' => $faker->jobTitle,
-                'description' => $faker->text,
+                'description' => $faker->bs,
                 'start_date' => $faker->dateTimeBetween('last year', 'now'),
                 'end_date' => $faker->dateTimeBetween('now', '+1 year'),
                 'created_at' => \Carbon\Carbon::now()

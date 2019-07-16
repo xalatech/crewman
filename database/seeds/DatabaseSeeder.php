@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
             EmployeesTableSeeder::class,
             EmployersTableSeeder::class,
             EmploymentsTableSeeder::class,
+            AssignmentsTableSeeder::class,
+            AssignmentRolesTableSeeder::class,
+            AssignmentRolesTableSeeder::class,
+            AssignmentLocationsTableSeeder::class,
         ]);
     }
 }
