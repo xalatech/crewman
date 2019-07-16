@@ -14,9 +14,9 @@ class CreateEmployersTable extends Migration
     public function up()
     {
         Schema::create('employers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

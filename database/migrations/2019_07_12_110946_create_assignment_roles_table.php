@@ -14,13 +14,16 @@ class CreateAssignmentRolesTable extends Migration
     public function up()
     {
         Schema::create('assignment_roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('assignment_id');
-            $table->string('description');
+            $table->increments('id');
+            $table->integer('assignment_id')->unsigned();
+            $table->string('title');
+            $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('role_type');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelee('cascade');
         });
     }
 

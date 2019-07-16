@@ -17,7 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('osma_id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

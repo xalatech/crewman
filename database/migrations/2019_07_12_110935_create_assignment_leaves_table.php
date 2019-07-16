@@ -14,12 +14,15 @@ class CreateAssignmentLeavesTable extends Migration
     public function up()
     {
         Schema::create('assignment_leaves', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('assignment_id');
+            $table->increments('id');
+            $table->integer('assignment_id')->unsigned();
             $table->string('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelee('cascade');
+
         });
     }
 

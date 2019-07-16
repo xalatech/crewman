@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $guarded = [];
     protected $fillable = ['osma_id', 'firstname', 'lastname'];
 
+    public function employments() {
+        return $this->hasMany(Employment::class);
+    }
 }

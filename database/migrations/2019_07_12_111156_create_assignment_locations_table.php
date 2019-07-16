@@ -14,10 +14,12 @@ class CreateAssignmentLocationsTable extends Migration
     public function up()
     {
         Schema::create('assignment_locations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('assignment_id');
+            $table->increments('id');
+            $table->integer('assignment_id')->unsigned();
             $table->string('country');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelee('cascade');
         });
     }
 
