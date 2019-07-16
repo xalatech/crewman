@@ -19278,7 +19278,7 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\irahmani\Documents\GitHub\crewman\resources\assets\js\bootstrap.js */"./resources/assets/js/bootstrap.js");
+module.exports = __webpack_require__(/*! /Users/ibrahimrahmani/Documents/GitHub/crewman/resources/assets/js/bootstrap.js */"./resources/assets/js/bootstrap.js");
 
 
 /***/ })
