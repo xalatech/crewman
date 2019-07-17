@@ -26,7 +26,7 @@
             <span v-else class="danger"> Inactive </span>
         </td>
         <td width="20%">
-            <span v-if="employee.employer"><button class="btn btn-info">Show details</button></span>
+            <span v-if="employee.employer"><router-link class="btn btn-info" v-bind:to="'/profile/' + employee.id">Show profile</router-link></span>
         </td>
       </tr>
       </tbody>
