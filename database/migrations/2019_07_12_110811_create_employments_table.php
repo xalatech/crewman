@@ -15,8 +15,8 @@ class CreateEmploymentsTable extends Migration
     {
         Schema::create('employments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('employer_id');
-            $table->integer('employee_osma_id');
+            $table->integer('employer_id')->unsigned();
+            $table->integer('employee_id');
             $table->string('title');
             $table->text('description');
             $table->date('start_date');
@@ -24,7 +24,7 @@ class CreateEmploymentsTable extends Migration
             $table->timestamp('created_at')->nullable();
 
             $table->foreign('employer_id')->references('id')->on('employers')->onDelete('cascade');
-            $table->foreign('employee_osma_id')->references('osma_id')->on('employees')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

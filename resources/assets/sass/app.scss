@@ -1,5 +1,5 @@
-// Bulma
-@import "~bulma/bulma.sass";
+// BootstrapCSS
+@import "~bootstrap/scss/bootstrap";
 
 body,
 html {
@@ -52,4 +52,8 @@ a:focus, a:hover {
 
 .navbar {
     padding: 5px;
+}
+
+.danger {
+    color: red;
 }

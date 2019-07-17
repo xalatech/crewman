@@ -1,6 +1,6 @@
  <template>
   <div class="container">
-
+    <employees-component></employees-component>
   </div>
 </template>
 <style scoped>

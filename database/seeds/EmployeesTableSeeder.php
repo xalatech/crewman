@@ -16,7 +16,7 @@ class EmployeesTableSeeder extends Seeder
         $digits = 5;
         foreach(range(1, 10) as $index) {
             DB::table('employees')->insert([
-                'osma_id' => rand(pow(10, $digits-1), pow(10, $digits)-1), // produce five digit number
+                'id' => rand(pow(10, $digits-1), pow(10, $digits)-1), // produce five digit number
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'created_at' => \Carbon\Carbon::now()

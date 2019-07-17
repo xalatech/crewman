@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import axios from 'axios'
 
 Vue.use(VueRouter)
 
 import App from './views/App'
 import Home from './views/Home'
-import EmployeesIndex from './views/EmployeesIndex'
+
+Vue.component('employees-component', require('./components/EmployeesComponent.vue').default);
 
 const router = new VueRouter({
     mode: 'history',
@@ -14,11 +14,6 @@ const router = new VueRouter({
         path: '/',
         name: 'home',
         component: Home
-    },
-    {
-        path: '/employees',
-        name: 'employee.index',
-        component: EmployeesIndex,
     }, ],
 });
 

@@ -21,7 +21,7 @@ class EmploymentsTableSeeder extends Seeder
         foreach(range(1, 10) as $index) {
             DB::table('employments')->insert([
                 'employer_id' => $this->getRandomEmployerId(),
-                'employee_osma_id' => $this->getRandomEmployeeId(),
+                'employee_id' => $this->getRandomEmployeeId(),
                 'title' => $faker->jobTitle,
                 'description' => $faker->bs,
                 'start_date' => $faker->dateTimeBetween('last year', 'now'),
@@ -33,7 +33,7 @@ class EmploymentsTableSeeder extends Seeder
 
     private function getRandomEmployeeId() {
         $employee = Employee::inRandomOrder()->first();
-        return $employee->osma_id;
+        return $employee->id;
     }
 
     private function getRandomEmployerId() {

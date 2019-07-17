@@ -15,8 +15,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return response(Employee::all()->jsonSerialize(), Response::HTTP_OK);
-    }
+        $employees = Employee::select('employees.*', 'employers.name AS employer')
+                    ->leftJoin('employments', 'employments.employee_id', '=', 'employees.id')
+                    ->leftJoin('employers', 'employers.id', '=', 'employments.employer_id', 'AND', 'employments.end_date', '>', Now())
+                    ->get();
+
+        return $employees;
+  }
 
     /**
      * Show the form for creating a new resource.
