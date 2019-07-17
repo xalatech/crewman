@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Employment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -15,12 +16,32 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::select('employees.*', 'employers.name AS employer')
-                    ->leftJoin('employments', 'employments.employee_id', '=', 'employees.id')
-                    ->leftJoin('employers', 'employers.id', '=', 'employments.employer_id', 'AND', 'employments.end_date', '>', Now())
+        $result = array();
+        $employees = Employee::select('employees.*')
+                    ->orderBy('first_name', 'asc')
+                    ->orderBy('last_name', 'asc')
                     ->get();
 
-        return $employees;
+        foreach($employees as $employee) {
+            $latestEmployment = Employment::select('name')
+                                ->join('employers', 'employers.id', '=', 'employments.employer_id')
+                                ->where('employee_id', $employee['id'])
+                                ->orderBy('start_date', 'desc')
+                                ->first();
+
+            $employee['employer'] = $latestEmployment['name'];
+            $result[] = $employee;
+        }
+
+        return $result;
+
+       // ->leftJoin('employments', 'employments.employee_id', '=', 'employees.id')
+       // ->leftJoin('employers', 'employers.id', '=', 'employments.employer_id', 'AND', 'employments.end_date', '>', Now())
+
+       //$latestEmployment = Employment::where('employee_id', $employee['id'])
+       //->orderBy('start_date', 'desc')
+       //->first();
+
   }
 
     /**
