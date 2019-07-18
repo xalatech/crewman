@@ -17,8 +17,8 @@ class CreateCurrentEmploymentsTable extends Migration
             $table->integer('employment_id')->unsigned();
             $table->integer('employee_id');            
           
-            $table->primary('employment_id', 'employee_id');
-            $table->unique('employment_id', 'employee_id');
+            $table->primary('employee_id');
+            $table->unique('employee_id');
             $table->foreign('employment_id')->references('id')->on('employments')->onDelete('cascade');
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });

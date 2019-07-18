@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Employment;
+use App\Models\Assignment;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -54,17 +56,27 @@ class EmployeeController extends Controller
                     ->first();
         
         // add employee record to the object
-        $result[] = $employee;
+        $result['employee'] = $employee;
 
         // produce array of employments for the employee
-        $employments = Employment::select('*')
+        $employments = Employment::select('employments.*', 'current_employments.employment_id AS current', 'employers.name AS employer')
                        ->join('employers', 'employers.id', '=', 'employments.employer_id')
-                       ->where('employee_id', $employee['id'])
-                       ->orderBy('start_date', 'desc')
+                       ->leftJoin('current_employments', 'current_employments.employment_id', '=', 'employments.id', 
+                       'AND', 'current_employments.employee_id', '=', 'employments.employee_id')
+                       ->where('employments.employee_id', $employee['id'])
                        ->get();
 
-        
-        $result['employments'][] = $employments;
+    
+        foreach($employments as $employment) {
+            $assignments = Assignment::select('*')
+                            ->where('employment_id', $employment->id)
+                            ->get(function () {
+                                $employment['assignments'] = $assignments;
+                                $result['employee']['employments'][] = $employment;
+                            });
+        }
+
+     
 
         return $result;
 

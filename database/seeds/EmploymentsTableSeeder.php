@@ -24,8 +24,6 @@ class EmploymentsTableSeeder extends Seeder
                 'employee_id' => $this->getRandomEmployeeId(),
                 'title' => $faker->jobTitle,
                 'description' => $faker->bs,
-                'start_date' => $faker->dateTimeBetween('last year', 'now'),
-                'end_date' => $faker->dateTimeBetween('now', '+1 year'),
                 'created_at' => \Carbon\Carbon::now()
             ]);
         }
