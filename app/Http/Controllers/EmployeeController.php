@@ -34,15 +34,46 @@ class EmployeeController extends Controller
         }
 
         return $result;
+    }
 
-       // ->leftJoin('employments', 'employments.employee_id', '=', 'employees.id')
-       // ->leftJoin('employers', 'employers.id', '=', 'employments.employer_id', 'AND', 'employments.end_date', '>', Now())
+     /**
+     * Get Employment profile by employee_id.
+     *
+     * @param  int  $employee_id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile($employee_id)
+    {
+        $result = array();
+        $employee = Employee::select('*')
+                    ->where('employees.id', $employee_id)
+                    ->first();
+        
+        // add employee record to the object
+        $result[] = $employee;
 
-       //$latestEmployment = Employment::where('employee_id', $employee['id'])
-       //->orderBy('start_date', 'desc')
-       //->first();
+        // produce array of employments for the employee
+        $employments = Employment::select('*')
+                       ->join('employers', 'employers.id', '=', 'employments.employer_id')
+                       ->where('employee_id', $employee['id'])
+                       ->orderBy('start_date', 'desc')
+                       ->get();
 
-  }
+        foreach($employments as $employment) {
+        $latestEmployment = Employment::select('name')
+                            ->join('employers', 'employers.id', '=', 'employments.employer_id')
+                            ->where('employee_id', $employee['id'])
+                            ->orderBy('start_date', 'desc')
+                            ->first();
+
+        $employee['employer'] = $latestEmployment['name'];
+        $result[] = $employee;
+    }
+        $result['employments'][] = $employments;
+
+        return $result;
+
+    }
 
     /**
      * Show the form for creating a new resource.

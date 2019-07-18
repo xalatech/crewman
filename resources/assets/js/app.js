@@ -23,7 +23,7 @@ const router = new VueRouter({
         component: EmployeesComponent
     },
     {
-        path: '/profiles',
+        path: '/profiles/:employee_id',
         name: 'profiles',
         component: ProfilesComponent
     },
