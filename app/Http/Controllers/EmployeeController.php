@@ -16,12 +16,16 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $result = array();
-        $employees = Employee::select('employees.*')
+        $employees = Employee::select('employees.*', 'employers.name AS employer')
+                    ->leftJoin('current_employments', 'current_employments.employee_id', '=', 'employees.id')
+                    ->leftJoin('employments', 'employments.id', '=', 'current_employments.employment_id')
+                    ->leftJoin('employers', 'employers.id', '=', 'employments.employer_id')
                     ->orderBy('first_name', 'asc')
                     ->orderBy('last_name', 'asc')
                     ->get();
-
+        
+        /* another method to get current employment
+        $result = array();
         foreach($employees as $employee) {
             $latestEmployment = Employment::select('name')
                                 ->join('employers', 'employers.id', '=', 'employments.employer_id')
@@ -29,11 +33,11 @@ class EmployeeController extends Controller
                                 ->orderBy('start_date', 'desc')
                                 ->first();
 
-            $employee['employer'] = $latestEmployment['name'];
+            $employee['employer'] = $latestEmployment['name']; 
             $result[] = $employee;
         }
-
-        return $result;
+        */
+        return $employees;
     }
 
      /**
@@ -59,16 +63,7 @@ class EmployeeController extends Controller
                        ->orderBy('start_date', 'desc')
                        ->get();
 
-        foreach($employments as $employment) {
-        $latestEmployment = Employment::select('name')
-                            ->join('employers', 'employers.id', '=', 'employments.employer_id')
-                            ->where('employee_id', $employee['id'])
-                            ->orderBy('start_date', 'desc')
-                            ->first();
-
-        $employee['employer'] = $latestEmployment['name'];
-        $result[] = $employee;
-    }
+        
         $result['employments'][] = $employments;
 
         return $result;
