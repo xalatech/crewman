@@ -67,15 +67,16 @@ class EmployeeController extends Controller
                        ->get();
 
     
-        foreach($employments as $employment) {
-            $assignments = Assignment::select('*')
+        foreach($employments as $index => $employment) {
+            $assignments = Assignment::select('assignments.*')
                             ->where('employment_id', $employment->id)
-                            ->get(function () {
-                                $employment['assignments'] = $assignments;
-                                $result['employee']['employments'][] = $employment;
-                            });
+                            ->get();
+          
+            $employments[$index]['assignments'] = $assignments;
         }
-
+        
+        $result['employee']['employments'] = $employments;
+       
      
 
         return $result;
