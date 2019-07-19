@@ -49,24 +49,15 @@ class EmployeeController extends Controller
         // add employee record to the object
         $result['employee'] = $employee;
 
-        // get current employment for the employee
-        $current_employment =  Employment::select('employments.*', 'employers.name AS employer')
-                            ->join('employers', 'employers.id', '=', 'employments.employer_id')
-                            ->leftJoin('current_employments', 'current_employments.employment_id', '=', 'employments.id',
-                            'AND', 'current_employments.employee_id', '=', 'employments.employee_id')
-                            ->where('current_employments.employee_id', $employee['id'])
-                            ->whereNotNull('current_employments.employee_id')
-                            ->first();
-
-        $result['employee']['current_employment'] = $current_employment;
-
-        // produce array of all other employments for the employee
-        $employments = Employment::select('employments.*', 'employers.name AS employer')
+        // produce array of all employments for the employee
+        $employments = Employment::select('employments.*', 'employers.name AS employer', 'current_employments.employee_id AS current')
                        ->join('employers', 'employers.id', '=', 'employments.employer_id')
                        ->leftJoin('current_employments', 'current_employments.employment_id', '=', 'employments.id',
                        'AND', 'current_employments.employee_id', '=', 'employments.employee_id')
                        ->where('employments.employee_id', $employee['id'])
-                       ->where('current_employments.employee_id')
+                       ->orderBy('current', 'desc')
+                       ->orderBy('end_date', 'desc')
+                       ->orderBy('start_date', 'desc')
                        ->get();
 
         // Add assignments to employments array
@@ -103,7 +94,7 @@ class EmployeeController extends Controller
             $employments[$index]['assignments'] = $assignments;
         }
 
-        $result['employee']['other_employments'] = $employments;
+        $result['employee']['employments'] = $employments;
 
         return $result;
     }

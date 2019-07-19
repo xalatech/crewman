@@ -209,6 +209,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   data: function data() {
@@ -914,7 +947,92 @@ var render = function() {
       _vm._v(" "),
       _vm.error
         ? _c("div", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))])
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "card card-default" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _vm._v("\n            Employments history\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _vm.employee && _vm.employee.employments
+            ? _c(
+                "div",
+                _vm._l(_vm.employee.employments, function(employment) {
+                  return _c("div", { key: employment.id }, [
+                    employment.current
+                      ? _c("div", { staticClass: "mt-10" }, [
+                          _vm._v(
+                            "\n                    Current Employment\n                "
+                          )
+                        ])
+                      : _c("div", { staticClass: "mt-10" }, [
+                          _vm._v(
+                            "\n                    Other Employments\n                "
+                          )
+                        ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Title: " + _vm._s(employment.title))]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v("Description: " + _vm._s(employment.description))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v("Start Date: " + _vm._s(employment.start_date))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v("End Date: " + _vm._s(employment.end_date))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v("Employer: " + _vm._s(employment.employer))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: {
+                          href: "#assignments_" + employment.id,
+                          "data-toggle": "collapse"
+                        }
+                      },
+                      [_vm._v("Assignments")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "collapse",
+                        attrs: { id: "assignments_" + employment.id }
+                      },
+                      [
+                        employment && employment.assignments
+                          ? _c(
+                              "div",
+                              _vm._l(employment.assignments, function(
+                                assignment
+                              ) {
+                                return _c("div", { key: assignment.id }, [
+                                  _c("p", [
+                                    _vm._v("Title: " + _vm._s(assignment.title))
+                                  ])
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                }),
+                0
+              )
+            : _vm._e()
+        ])
+      ])
     ])
   ])
 }
