@@ -13,7 +13,8 @@ class EmployersTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('App\Models\Employer');
-        foreach(range(1, 10) as $index) {
+
+        for($i = 0; $i <= 10; $i++) {
             DB::table('employers')->insert([
                 'name' => $faker->company,
                 'created_at' => \Carbon\Carbon::now()

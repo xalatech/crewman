@@ -16,18 +16,17 @@ class AssignmentsTableSeeder extends Seeder
         $faker = Faker::create('App\Models\Assignment');
         $faker->addProvider(new \Faker\Provider\en_US\Company($faker));
 
-        foreach(range(1, 10) as $index) {
-            DB::table('assignments')->insert([
-                'employment_id' => $this->getRandomEmploymentId(),
-                'title' => $faker->catchPhrase,
-                'description' => $faker->bs,
-                'created_at' => \Carbon\Carbon::now()
-            ]);
-        }
-    }
+        $employments = Employment::select('*')->get();
 
-    private function getRandomEmploymentId() {
-        $employment = Employment::inRandomOrder()->first();
-        return $employment->id;
+        foreach($employments as $employment) {
+            for($i = 0; $i <= 5; $i++) {
+                DB::table('assignments')->insert([
+                    'employment_id' => $employment->id,
+                    'title' => $faker->catchPhrase,
+                    'description' => $faker->bs,
+                    'created_at' => \Carbon\Carbon::now()
+                ]);
+            }
+        }
     }
 }

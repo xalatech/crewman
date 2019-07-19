@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="images/osm_logo.png" alt="OSM Aviation - Crewman" height="100">
+                <img src="/images/osm_logo.png" alt="OSM Aviation - Crewman" height="100">
             </a>
 
         </div>

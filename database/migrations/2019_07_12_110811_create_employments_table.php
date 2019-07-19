@@ -19,6 +19,8 @@ class CreateEmploymentsTable extends Migration
             $table->integer('employee_id');
             $table->string('title');
             $table->text('description');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamp('created_at')->nullable();
 
             $table->foreign('employer_id')->references('id')->on('employers')->onDelete('cascade');

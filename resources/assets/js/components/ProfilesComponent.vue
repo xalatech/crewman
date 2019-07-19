@@ -1,11 +1,11 @@
 <template>
   <div class="card card-default">
     <div class="card-header">
-      List of OSM Aviation Employees
+      <span v-if="employee">{{ employee.first_name }} {{ employee.last_name }} - Employment Profile</span>
     </div>
   <div class="card-body">
     <div class="loading" v-if="loading">Loading...</div>
-    
+
       <div v-if="error" class="error">{{ error }}</div>
     </div>
   </div>
@@ -30,8 +30,7 @@ export default {
         fetch('/api/employees/profile/' + this.employee_id)
         .then(res => res.json())
         .then(res => {
-            console.log(res);
-            this.employee = res;
+            this.employee = res.employee;
             this.loading = false;
         })
         .catch(err => this.error = error);

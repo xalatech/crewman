@@ -230,8 +230,7 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/api/employees/profile/' + this.employee_id).then(function (res) {
         return res.json();
       }).then(function (res) {
-        console.log(res);
-        _this.employee = res;
+        _this.employee = res.employee;
         _this.loading = false;
       })["catch"](function (err) {
         return _this.error = error;
@@ -896,7 +895,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card card-default" }, [
     _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n    List of OSM Aviation Employees\n  ")
+      _vm.employee
+        ? _c("span", [
+            _vm._v(
+              _vm._s(_vm.employee.first_name) +
+                " " +
+                _vm._s(_vm.employee.last_name) +
+                " - Employment Profile"
+            )
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [

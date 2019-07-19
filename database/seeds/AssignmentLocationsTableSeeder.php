@@ -16,17 +16,16 @@ class AssignmentLocationsTableSeeder extends Seeder
         $faker = Faker::create('App\Models\AssignmentLocation');
         $faker->addProvider(new \Faker\Provider\en_US\Company($faker));
 
-        foreach(range(1, 10) as $index) {
-            DB::table('assignment_locations')->insert([
-                'assignment_id' => $this->getRandomAssignmentId(),
-                'country' => $faker->country,
-                'created_at' => \Carbon\Carbon::now()
-            ]);
-        }
-    }
+        $assignments = Assignment::select('*')->get();
 
-    private function getRandomAssignmentId() {
-        $assignment = Assignment::inRandomOrder()->first();
-        return $assignment->id;
+        foreach($assignments as $assignment) {
+            for($i = 0; $i <= 2; $i++) {
+                DB::table('assignment_locations')->insert([
+                    'assignment_id' => $assignment->id,
+                    'country' => $faker->country,
+                    'created_at' => \Carbon\Carbon::now()
+                ]);
+            }
+        }
     }
 }

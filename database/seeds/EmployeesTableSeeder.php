@@ -14,7 +14,8 @@ class EmployeesTableSeeder extends Seeder
     {
         $faker = Faker::create('App\Models\Employee');
         $digits = 5;
-        foreach(range(1, 10) as $index) {
+
+        for($i = 0; $i <= 10; $i++) {
             DB::table('employees')->insert([
                 'id' => rand(pow(10, $digits-1), pow(10, $digits)-1), // produce five digit number
                 'first_name' => $faker->firstName,

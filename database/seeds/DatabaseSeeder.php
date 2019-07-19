@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             EmploymentsTableSeeder::class,
             AssignmentsTableSeeder::class,
             AssignmentRolesTableSeeder::class,
-            AssignmentRolesTableSeeder::class,
+            AssignmentLeavesTableSeeder::class,
             AssignmentLocationsTableSeeder::class,
         ]);
     }

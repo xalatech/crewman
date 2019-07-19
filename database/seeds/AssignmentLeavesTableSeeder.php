@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Assignment;
+use App\Models\AssignmentLeave;
 use Faker\Factory as Faker;
 
 class AssignmentLeavesTableSeeder extends Seeder
@@ -16,19 +17,19 @@ class AssignmentLeavesTableSeeder extends Seeder
         $faker = Faker::create('App\Models\AssignmentLeave');
         $faker->addProvider(new \Faker\Provider\en_US\Company($faker));
 
-        foreach(range(1, 10) as $index) {
-            DB::table('assignment_leaves')->insert([
-                'assignment_id' => $this->getRandomAssignmentId(),
-                'description' => $faker->text,
-                'start_date' => $faker->dateTimeBetween('last year', 'now'),
-                'end_date' => $faker->dateTimeBetween('now', '+1 year'),
-                'created_at' => \Carbon\Carbon::now()
-            ]);
-        }
-    }
+        $assignments = Assignment::select('*')->get();
 
-    private function getRandomAssignmentId() {
-        $assignment = Assignment::inRandomOrder()->first();
-        return $assignment->id;
+        foreach($assignments as $assignment) {
+            for($i = 0; $i <= 2; $i++) {
+                DB::table('assignment_leaves')->insert([
+                    'assignment_id' => $assignment->id,
+                    'description' => $faker->text,
+                    'start_date' => $faker->dateTimeBetween('last year', 'now'),
+                    'end_date' => $faker->dateTimeBetween('now', '+1 year'),
+                    'created_at' => \Carbon\Carbon::now()
+                ]);
+            }
+        }
+
     }
 }
