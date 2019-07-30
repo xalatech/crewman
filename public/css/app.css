@@ -10687,6 +10687,10 @@ h6 {
   font-weight: 500;
 }
 
+h1 {
+  text-transform: capitalize;
+}
+
 a:focus,
 a:hover {
   color: #1468a0;

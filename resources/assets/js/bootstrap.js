@@ -6,6 +6,7 @@ window._ = require('lodash');
 
 try {
     window.$ = window.jQuery = require('jquery');
+    window.Popper = Popper;
     require('bootstrap');
 } catch (e) {}
 

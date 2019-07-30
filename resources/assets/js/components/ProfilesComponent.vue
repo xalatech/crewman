@@ -1,47 +1,66 @@
 <template>
+  <div v-if="employee">
+        <h1>{{ employee.first_name }} {{ employee.last_name }} - Employment Profile</h1>
   <div class="card card-default">
     <div class="card-header">
-      <span v-if="employee">{{ employee.first_name }} {{ employee.last_name }} - Employment Profile</span>
+      Employment History
     </div>
   <div class="card-body">
     <div class="loading" v-if="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
-    <div class="card card-default">
-        <div class="card-header">
-            Employments history
-        </div>
-        <div class="card-body">
             <div v-if="employee && employee.employments">
-
-            <div v-for="employment in employee.employments" :key="employment.id">
-                <div class="mt-10" v-if="employment.current">
-                    Current Employment
-                </div>
-                <div class="mt-10" v-else>
-                    Other Employments
-                </div>
-
-                <p>Title: {{employment.title}}</p>
-                <p>Description: {{employment.description}}</p>
-                <p>Start Date: {{employment.start_date}}</p>
-                <p>End Date: {{employment.end_date}}</p>
-                <p>Employer: {{employment.employer}}</p>
-
+<ul class="list-group employments">
+  <li v-for="employment in employee.employments" :key="employment.id" 
+    v-bind:class="[listItemClass, (employment.current) ? listItemCurrnetClass : '']">
+                <p>{{employment.title}}</p>
+                <p><strong>{{employment.employer}}</strong></p>
+                <p>{{employment.start_date}} - {{employment.current ? 'Current' : employment.end_date}}</p>
+              
+            <div v-if="employment && employment.assignments">
+        
             <a v-bind:href="'#assignments_' + employment.id" class="btn btn-primary" data-toggle="collapse">Assignments</a>
             <div v-bind:id="'assignments_' + employment.id" class="collapse">
-               <div v-if="employment && employment.assignments">
-                   <div v-for="assignment in employment.assignments" :key="assignment.id">
-                        <p>Title: {{assignment.title}}</p>
-                   </div>
-               </div>
+            <div class="card card-body mt-3">
+                
+                          <table class="table table-striped table-bordered" v-if="employment.assignments">
+        <thead>
+        <tr>
+          <th>Assignment</th>
+          <th>Additional info</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="assignment in employment.assignments" :key="assignment.id">
+          <td width="60%"> {{ assignment.title }} </td>
+          <td width="40%">
+           <div v-if="assignment.locations">  
+            <a v-bind:href="'#locations_' + assignment.id" class="btn btn-info" data-toggle="collapse">View Locations</a>
+              <div v-bind:id="'locations_' + assignment.id" class="collapse">
+                <ul>
+                  <li v-for="location in assignment.locations" :key="location.id">{{location.country}}</li>
+                </ul>
+              </div>
+           </div>
+            
+          </td>
+        </tr>
+        </tbody>
+      </table>
+                   
             </div>
-</div>
-        </div>
+            </div>
+                           </div>
+
+          
+   
+    
+    </li>
+</ul>
+        </div> 
     </div>
 
     </div>
-  </div>
-  </div>
+    </div>
 </template>
 <script>
 export default {
@@ -51,7 +70,9 @@ export default {
       loading: false,
       employee: null,
       employee_id: this.$route.params.employee_id,
-      error: null
+      error: null,
+      listItemClass: 'list-group-item',
+      listItemCurrnetClass: 'list-group-item-primary'
     };
   },
   created() {

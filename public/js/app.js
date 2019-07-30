@@ -242,6 +242,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   data: function data() {
@@ -249,7 +268,9 @@ __webpack_require__.r(__webpack_exports__);
       loading: false,
       employee: null,
       employee_id: this.$route.params.employee_id,
-      error: null
+      error: null,
+      listItemClass: 'list-group-item',
+      listItemCurrnetClass: 'list-group-item-primary'
     };
   },
   created: function created() {
@@ -926,117 +947,243 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card card-default" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _vm.employee
-        ? _c("span", [
-            _vm._v(
-              _vm._s(_vm.employee.first_name) +
-                " " +
-                _vm._s(_vm.employee.last_name) +
-                " - Employment Profile"
-            )
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _vm.loading
-        ? _c("div", { staticClass: "loading" }, [_vm._v("Loading...")])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.error
-        ? _c("div", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "card card-default" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("\n            Employments history\n        ")
+  return _vm.employee
+    ? _c("div", [
+        _c("h1", [
+          _vm._v(
+            _vm._s(_vm.employee.first_name) +
+              " " +
+              _vm._s(_vm.employee.last_name) +
+              " - Employment Profile"
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _vm.employee && _vm.employee.employments
-            ? _c(
-                "div",
-                _vm._l(_vm.employee.employments, function(employment) {
-                  return _c("div", { key: employment.id }, [
-                    employment.current
-                      ? _c("div", { staticClass: "mt-10" }, [
-                          _vm._v(
-                            "\n                    Current Employment\n                "
-                          )
-                        ])
-                      : _c("div", { staticClass: "mt-10" }, [
-                          _vm._v(
-                            "\n                    Other Employments\n                "
-                          )
-                        ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Title: " + _vm._s(employment.title))]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("Description: " + _vm._s(employment.description))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("Start Date: " + _vm._s(employment.start_date))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("End Date: " + _vm._s(employment.end_date))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("Employer: " + _vm._s(employment.employer))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: {
-                          href: "#assignments_" + employment.id,
-                          "data-toggle": "collapse"
-                        }
-                      },
-                      [_vm._v("Assignments")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "collapse",
-                        attrs: { id: "assignments_" + employment.id }
-                      },
-                      [
-                        employment && employment.assignments
-                          ? _c(
-                              "div",
-                              _vm._l(employment.assignments, function(
-                                assignment
-                              ) {
-                                return _c("div", { key: assignment.id }, [
-                                  _c("p", [
-                                    _vm._v("Title: " + _vm._s(assignment.title))
-                                  ])
-                                ])
-                              }),
-                              0
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n      Employment History\n    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm.loading
+              ? _c("div", { staticClass: "loading" }, [_vm._v("Loading...")])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.error
+              ? _c("div", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.employee && _vm.employee.employments
+              ? _c("div", [
+                  _c(
+                    "ul",
+                    { staticClass: "list-group employments" },
+                    _vm._l(_vm.employee.employments, function(employment) {
+                      return _c(
+                        "li",
+                        {
+                          key: employment.id,
+                          class: [
+                            _vm.listItemClass,
+                            employment.current ? _vm.listItemCurrnetClass : ""
+                          ]
+                        },
+                        [
+                          _c("p", [_vm._v(_vm._s(employment.title))]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("strong", [_vm._v(_vm._s(employment.employer))])
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              _vm._s(employment.start_date) +
+                                " - " +
+                                _vm._s(
+                                  employment.current
+                                    ? "Current"
+                                    : employment.end_date
+                                )
                             )
-                          : _vm._e()
-                      ]
-                    )
-                  ])
-                }),
-                0
-              )
-            : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          employment && employment.assignments
+                            ? _c("div", [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: {
+                                      href: "#assignments_" + employment.id,
+                                      "data-toggle": "collapse"
+                                    }
+                                  },
+                                  [_vm._v("Assignments")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "collapse",
+                                    attrs: {
+                                      id: "assignments_" + employment.id
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "card card-body mt-3" },
+                                      [
+                                        employment.assignments
+                                          ? _c(
+                                              "table",
+                                              {
+                                                staticClass:
+                                                  "table table-striped table-bordered"
+                                              },
+                                              [
+                                                _vm._m(0, true),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "tbody",
+                                                  _vm._l(
+                                                    employment.assignments,
+                                                    function(assignment) {
+                                                      return _c(
+                                                        "tr",
+                                                        { key: assignment.id },
+                                                        [
+                                                          _c(
+                                                            "td",
+                                                            {
+                                                              attrs: {
+                                                                width: "60%"
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                " " +
+                                                                  _vm._s(
+                                                                    assignment.title
+                                                                  ) +
+                                                                  " "
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "td",
+                                                            {
+                                                              attrs: {
+                                                                width: "40%"
+                                                              }
+                                                            },
+                                                            [
+                                                              assignment.locations
+                                                                ? _c("div", [
+                                                                    _c(
+                                                                      "a",
+                                                                      {
+                                                                        staticClass:
+                                                                          "btn btn-info",
+                                                                        attrs: {
+                                                                          href:
+                                                                            "#locations_" +
+                                                                            assignment.id,
+                                                                          "data-toggle":
+                                                                            "collapse"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "View Locations"
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "collapse",
+                                                                        attrs: {
+                                                                          id:
+                                                                            "locations_" +
+                                                                            assignment.id
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "ul",
+                                                                          _vm._l(
+                                                                            assignment.locations,
+                                                                            function(
+                                                                              location
+                                                                            ) {
+                                                                              return _c(
+                                                                                "li",
+                                                                                {
+                                                                                  key:
+                                                                                    location.id
+                                                                                },
+                                                                                [
+                                                                                  _vm._v(
+                                                                                    _vm._s(
+                                                                                      location.country
+                                                                                    )
+                                                                                  )
+                                                                                ]
+                                                                              )
+                                                                            }
+                                                                          ),
+                                                                          0
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ])
+                                                                : _vm._e()
+                                                            ]
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              : _vm._e()
+          ])
         ])
       ])
-    ])
-  ])
+    : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Assignment")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Additional info")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -16201,8 +16348,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\irahmani\Documents\GitHub\crewman\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\irahmani\Documents\GitHub\crewman\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /Users/ibrahimrahmani/Documents/GitHub/crewman/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /Users/ibrahimrahmani/Documents/GitHub/crewman/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
