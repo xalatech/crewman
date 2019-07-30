@@ -261,6 +261,67 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   data: function data() {
@@ -269,8 +330,8 @@ __webpack_require__.r(__webpack_exports__);
       employee: null,
       employee_id: this.$route.params.employee_id,
       error: null,
-      listItemClass: 'list-group-item',
-      listItemCurrnetClass: 'list-group-item-primary'
+      listItemClass: "list-group-item",
+      listItemCurrnetClass: "list-group-item-primary"
     };
   },
   created: function created() {
@@ -281,7 +342,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      fetch('/api/employees/profile/' + this.employee_id).then(function (res) {
+      fetch("/api/employees/profile/" + this.employee_id).then(function (res) {
         return res.json();
       }).then(function (res) {
         _this.employee = res.employee;
@@ -960,7 +1021,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n      Employment History\n    ")
+            _vm._v("Employment History")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -988,38 +1049,48 @@ var render = function() {
                           ]
                         },
                         [
-                          _c("p", [_vm._v(_vm._s(employment.title))]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c("strong", [_vm._v(_vm._s(employment.employer))])
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              _vm._s(employment.start_date) +
-                                " - " +
-                                _vm._s(
-                                  employment.current
-                                    ? "Current"
-                                    : employment.end_date
+                          _c("div", { staticClass: "container" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-sm" }, [
+                                _vm._v(_vm._s(employment.title))
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "col-sm font-weight-bold" },
+                                [_vm._v(_vm._s(employment.employer))]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm" }, [
+                                _vm._v(
+                                  _vm._s(employment.start_date) +
+                                    " - " +
+                                    _vm._s(
+                                      employment.current
+                                        ? "Current"
+                                        : employment.end_date
+                                    )
                                 )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          employment && employment.assignments
-                            ? _c("div", [
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm" }, [
                                 _c(
                                   "a",
                                   {
-                                    staticClass: "btn btn-primary",
+                                    staticClass: "btn btn-sm btn-primary",
                                     attrs: {
                                       href: "#assignments_" + employment.id,
                                       "data-toggle": "collapse"
                                     }
                                   },
-                                  [_vm._v("Assignments")]
-                                ),
-                                _vm._v(" "),
+                                  [_vm._v("View assignments")]
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          employment && employment.assignments
+                            ? _c("div", [
                                 _c(
                                   "div",
                                   {
@@ -1032,127 +1103,338 @@ var render = function() {
                                     _c(
                                       "div",
                                       { staticClass: "card card-body mt-3" },
-                                      [
-                                        employment.assignments
-                                          ? _c(
-                                              "table",
-                                              {
-                                                staticClass:
-                                                  "table table-striped table-bordered"
-                                              },
+                                      _vm._l(employment.assignments, function(
+                                        assignment
+                                      ) {
+                                        return _c(
+                                          "div",
+                                          { key: assignment.id },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "row mt-2" },
                                               [
-                                                _vm._m(0, true),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-sm-8" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(assignment.title)
+                                                    )
+                                                  ]
+                                                ),
                                                 _vm._v(" "),
                                                 _c(
-                                                  "tbody",
-                                                  _vm._l(
-                                                    employment.assignments,
-                                                    function(assignment) {
-                                                      return _c(
-                                                        "tr",
-                                                        { key: assignment.id },
+                                                  "div",
+                                                  { staticClass: "col-sm" },
+                                                  [
+                                                    _c(
+                                                      "a",
+                                                      {
+                                                        staticClass:
+                                                          "btn btn-sm btn-primary",
+                                                        attrs: {
+                                                          href:
+                                                            "#locations_" +
+                                                            assignment.id,
+                                                          "data-toggle":
+                                                            "collapse"
+                                                        }
+                                                      },
+                                                      [_vm._v("Locations")]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-sm" },
+                                                  [
+                                                    _c(
+                                                      "a",
+                                                      {
+                                                        staticClass:
+                                                          "btn btn-sm btn-info",
+                                                        attrs: {
+                                                          href:
+                                                            "#roles_" +
+                                                            assignment.id,
+                                                          "data-toggle":
+                                                            "collapse"
+                                                        }
+                                                      },
+                                                      [_vm._v("Roles")]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-sm" },
+                                                  [
+                                                    _c(
+                                                      "a",
+                                                      {
+                                                        staticClass:
+                                                          "btn btn-sm btn-secondary",
+                                                        attrs: {
+                                                          href:
+                                                            "#leaves_" +
+                                                            assignment.id,
+                                                          "data-toggle":
+                                                            "collapse"
+                                                        }
+                                                      },
+                                                      [_vm._v("Leaves")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            assignment.locations
+                                              ? _c("div", [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "collapse",
+                                                      attrs: {
+                                                        id:
+                                                          "locations_" +
+                                                          assignment.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "table",
+                                                        {
+                                                          staticClass:
+                                                            "table table-striped table-bordered mt-3"
+                                                        },
                                                         [
-                                                          _c(
-                                                            "td",
-                                                            {
-                                                              attrs: {
-                                                                width: "60%"
-                                                              }
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    assignment.title
-                                                                  ) +
-                                                                  " "
-                                                              )
-                                                            ]
-                                                          ),
+                                                          _vm._m(0, true),
                                                           _vm._v(" "),
                                                           _c(
-                                                            "td",
-                                                            {
-                                                              attrs: {
-                                                                width: "40%"
+                                                            "tbody",
+                                                            _vm._l(
+                                                              assignment.locations,
+                                                              function(
+                                                                location
+                                                              ) {
+                                                                return _c(
+                                                                  "tr",
+                                                                  {
+                                                                    key:
+                                                                      location.id
+                                                                  },
+                                                                  [
+                                                                    _c("td", [
+                                                                      _vm._v(
+                                                                        _vm._s(
+                                                                          location.country
+                                                                        )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                )
                                                               }
-                                                            },
-                                                            [
-                                                              assignment.locations
-                                                                ? _c("div", [
+                                                            ),
+                                                            0
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  )
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            assignment.roles
+                                              ? _c("div", [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "collapse",
+                                                      attrs: {
+                                                        id:
+                                                          "roles_" +
+                                                          assignment.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "table",
+                                                        {
+                                                          staticClass:
+                                                            "table table-striped table-bordered mt-3"
+                                                        },
+                                                        [
+                                                          _vm._m(1, true),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "tbody",
+                                                            _vm._l(
+                                                              assignment.roles,
+                                                              function(role) {
+                                                                return _c(
+                                                                  "tr",
+                                                                  {
+                                                                    key: role.id
+                                                                  },
+                                                                  [
                                                                     _c(
-                                                                      "a",
+                                                                      "td",
                                                                       {
-                                                                        staticClass:
-                                                                          "btn btn-info",
                                                                         attrs: {
-                                                                          href:
-                                                                            "#locations_" +
-                                                                            assignment.id,
-                                                                          "data-toggle":
-                                                                            "collapse"
+                                                                          width:
+                                                                            "50%"
                                                                         }
                                                                       },
                                                                       [
                                                                         _vm._v(
-                                                                          "View Locations"
+                                                                          _vm._s(
+                                                                            role.title
+                                                                          )
                                                                         )
                                                                       ]
                                                                     ),
                                                                     _vm._v(" "),
                                                                     _c(
-                                                                      "div",
+                                                                      "td",
                                                                       {
-                                                                        staticClass:
-                                                                          "collapse",
                                                                         attrs: {
-                                                                          id:
-                                                                            "locations_" +
-                                                                            assignment.id
+                                                                          width:
+                                                                            "30%"
                                                                         }
                                                                       },
                                                                       [
-                                                                        _c(
-                                                                          "ul",
-                                                                          _vm._l(
-                                                                            assignment.locations,
-                                                                            function(
-                                                                              location
-                                                                            ) {
-                                                                              return _c(
-                                                                                "li",
-                                                                                {
-                                                                                  key:
-                                                                                    location.id
-                                                                                },
-                                                                                [
-                                                                                  _vm._v(
-                                                                                    _vm._s(
-                                                                                      location.country
-                                                                                    )
-                                                                                  )
-                                                                                ]
-                                                                              )
-                                                                            }
-                                                                          ),
-                                                                          0
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            role.start_date
+                                                                          ) +
+                                                                            " - " +
+                                                                            _vm._s(
+                                                                              role.end_date
+                                                                            )
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "td",
+                                                                      {
+                                                                        attrs: {
+                                                                          width:
+                                                                            "20%"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            role.role_type
+                                                                          )
                                                                         )
                                                                       ]
                                                                     )
-                                                                  ])
-                                                                : _vm._e()
-                                                            ]
+                                                                  ]
+                                                                )
+                                                              }
+                                                            ),
+                                                            0
                                                           )
                                                         ]
                                                       )
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ]
+                                                    ]
+                                                  )
+                                                ])
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            assignment.leaves
+                                              ? _c("div", [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "collapse",
+                                                      attrs: {
+                                                        id:
+                                                          "leaves_" +
+                                                          assignment.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "table",
+                                                        {
+                                                          staticClass:
+                                                            "table table-striped table-bordered mt-3"
+                                                        },
+                                                        [
+                                                          _vm._m(2, true),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "tbody",
+                                                            _vm._l(
+                                                              assignment.leaves,
+                                                              function(leave) {
+                                                                return _c(
+                                                                  "tr",
+                                                                  {
+                                                                    key:
+                                                                      leave.id
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "td",
+                                                                      {
+                                                                        attrs: {
+                                                                          width:
+                                                                            "70%"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            leave.description
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "td",
+                                                                      {
+                                                                        attrs: {
+                                                                          width:
+                                                                            "30%"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            leave.start_date
+                                                                          ) +
+                                                                            " - " +
+                                                                            _vm._s(
+                                                                              leave.end_date
+                                                                            )
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              }
+                                                            ),
+                                                            0
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  )
+                                                ])
+                                              : _vm._e()
+                                          ]
+                                        )
+                                      }),
+                                      0
                                     )
                                   ]
                                 )
@@ -1175,11 +1457,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("thead", [_c("tr", [_c("th", [_vm._v("Country")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Assignment")]),
+        _c("th", [_vm._v("Role")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Additional info")])
+        _c("th", [_vm._v("Duration")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Role type")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Duration")])
       ])
     ])
   }
@@ -16348,8 +16650,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ibrahimrahmani/Documents/GitHub/crewman/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /Users/ibrahimrahmani/Documents/GitHub/crewman/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\Users\irahmani\Documents\GitHub\crewman\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\irahmani\Documents\GitHub\crewman\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })

@@ -23,7 +23,7 @@ class AssignmentLeavesTableSeeder extends Seeder
             for($i = 0; $i <= 2; $i++) {
                 DB::table('assignment_leaves')->insert([
                     'assignment_id' => $assignment->id,
-                    'description' => $faker->text,
+                    'description' => $faker->sentence,
                     'start_date' => $faker->dateTimeBetween('last year', 'now'),
                     'end_date' => $faker->dateTimeBetween('now', '+1 year'),
                     'created_at' => \Carbon\Carbon::now()
